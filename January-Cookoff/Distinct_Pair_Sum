@@ -1,3 +1,7 @@
+// Since we need to find all possible numbers formed by sum of 2 non distinct integers in range [L,R] , we can notice that smallest number that can be formed is 
+// 2*L and largest number can be 2*R , and also all numbers in the range [2*l,2*R] will be formed with the sum of two integers .
+
+
 #include <iostream>
 using namespace std;
 
