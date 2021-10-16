@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+----------------------EXPLANATION-----------------------------------------------------------------
+Each number Ai, can be represented as 1+(Ai-1) . So all distinct numbers can be put in plane without overlapping if we represent
+them as above . 
+	But what if numbers are duplicate , we can then maintain a map of frequency to check how many duplicate numbers
+	can be placed in plane without overlapping .
+	So it basically comes down to the fact that how many ways can a number x be broken down into 2 numbers a , b such
+	that x=a+b . There are x-1 ways to represent a number using above formula.
+	x = 1+x-1
+	x = 2+x-2
+	.
+	.
+	.
+	.
+	x =x-1+1;
+So the number of times a number x can be placed in a plane is min(Xfreq,x-1).
+int main()
+{
+    int t;
+    cin>>t;
+    while(t-->0)
+    {
+        int n,cnt=0;
+        map<int,int> m;
+        cin>>n;
+        int a[n];
+        for(int i=0;i<n;i++)
+        {
+            cin>>a[i];
+            m[a[i]]++;
+        }
+        for(auto it=m.begin();it!=m.end();it++)
+            cnt+=min(it->second,it->first-1);
+        cout<<cnt;
+    }
+    return 0;
+}

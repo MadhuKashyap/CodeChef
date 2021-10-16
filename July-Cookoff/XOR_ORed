@@ -1,0 +1,51 @@
+
+--------------------------EXPLANATION---------------------------------
+To minimize OR value we need to unset the set bits of numbers by performing XOR . So we need to choose an ideal element 
+which when XORed with all numbers will unset the all set ith  bit of all numbers . But we have to unset all ith bit of 
+numbers because if one of them is set after XOR it will anyhow set the ith bit after OR .
+
+So we construct x (to XOR with all elements) by setting its ith bit only if ith bit of all numbers is set. 
+If  we set ith bit of x and suppose 3 numbers have set ith bit and rest have ith bit unset , then after XOR with x the 3 
+number's ith bit will be unset but the rest of the number's ith bit will be set and it will contribute towards set bit of x
+after OR operation. 
+
+
+
+int main() {
+	// your code goes here
+	int t;
+    cin>>t;
+    while(t-->0)
+    {
+        int n,cnt=0;
+        int m[32]={0};
+        cin>>n;
+        int a[n];
+        for(int i=0;i<n;i++)
+        {
+            cin>>a[i];
+            //m[a[i]]++;
+        }
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<32;j++)
+            {
+                if(a[i]&(1<<j))
+                    m[j]++;
+            }
+        }
+        int x=0,val=0;
+        for(int i=0;i<32;i++)
+        {
+            if(m[i]==n)
+                x|=(1<<i);
+        }
+        for(int i=0;i<n;i++)
+        {
+            val|=(a[i]^x);
+        }
+        cout<<x<<" "<<val<<"\n";
+    }
+	return 0;
+}
+
