@@ -1,0 +1,60 @@
+//--------------------------------------------EXPLAINATION--------------------------------
+
+The number of islands will be more when the area of island will be minimum. The minimum area that island can have is 11.
+
+The Maximum number of island in grid are ceil((n*m)/2) 
+
+There are two types of arrangement possible when N∗M is even.
+
+There is only one arrangement possible when N∗M is odd.
+
+Finally, found out the minimum number of moves that are required in the any arrangement.
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void solve(){
+  int n,m; cin>>n>>m;
+  vector <string> s(n);
+
+  int count_star[2]={},count_dot[2]={};
+
+  for(int i=0;i<n;i++){
+    cin>>s[i];
+    for(int j=0;j<m;j++){
+      if(s[i][j]=='*'){
+        count_star[(i+j)%2]++;
+      }
+      else{
+        count_dot[(i+j)%2]++;
+      }
+    }
+  }
+
+  if(n%2==0 || m%2==0){
+    int total=(n*m)/2;
+    int ans_1=abs(count_star[0]-total)+abs(count_dot[1]-total);
+    int ans_2=abs(count_dot[0]-total)+abs(count_star[1]-total);
+
+    cout<<min(ans_1,ans_2)<<"\n";
+    return;
+  }
+
+  int star=(n*m)/2,dot=star;
+  star++;
+  int ans=abs(count_star[0]-star)+abs(count_dot[1]-dot);
+  cout<<ans<<"\n";
+}
+
+int main(){
+  ios_base::sync_with_stdio(0);
+  cin.tie(0);
+
+  int t; cin>>t;
+  while(t--){
+    solve();
+  }
+
+return 0;
+}
