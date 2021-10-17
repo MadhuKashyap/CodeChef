@@ -1,0 +1,24 @@
+-----------------------------------------------------EXPLAINATION-----------------------------------------------------------------
+
+One way is to output a prime number that is greater than RR let us say it XX.
+
+Since XX is a prime number, that means the only factor of XX that is greater than 11 is XX itself. As XX is greater than RR, it won’t share any common factors greater than 11 with the given range [L, R][L,R].
+
+int32_t main()
+{
+  ios_base::sync_with_stdio(0);
+  cin.tie(0);
+ 
+  int t;
+  cin>>t;
+ 
+  while(t--)
+  {
+    int l,r;
+    cin>>l>>r;
+ 
+    cout<<10000019<<"\n";
+  }
+ 
+return 0;
+}
