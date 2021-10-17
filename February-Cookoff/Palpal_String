@@ -1,0 +1,40 @@
+//--------------------------------------------EXPLAINATION------------------------------------------------
+//We will maintain frequency of each character in the string in an array say alph[].All characters with alph[i]>1 will together make palpal 
+//string only, but we need to monitor alph[i]=1 , because they cannot form palpal string on their own . So if a string has count of alph[i]>1
+//and alph[i]%2==0 (say a) and count of alph[i]==1 (say b) and it is palpal iff a>=b (since a character can only be inserted between even
+//length string to still form a  palindrome
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        string s;
+        int o=0,n=0;
+        cin>>s;
+        vector<int> alph(26,0);
+        for(int i=0;i<s.length();i++)
+            alph[s[i]-'a']++;
+        for(int i=0;i<26;i++)
+        {
+            if(alph[i]==1)
+                o++;
+            else if(alph[i]>1&&alph[i]%2==0)
+                n++;
+        }
+    
+        
+        if(o>n)
+            cout<<"NO\n";
+        else
+            cout<<"YES\n";
+    }
+    
+    return 0;
+}
+
