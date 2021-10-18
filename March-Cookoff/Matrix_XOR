@@ -1,0 +1,43 @@
+//---------------------------------------------EXPLAINATION-------------------------------------------------
+//If we consider the matrix corresponsing to n=4, m=5 , k=1 where the index starts from 1.Each number can uniquely exist at (i,j).
+//     |2| | | | |
+//     |3| | | | |
+//     |4| | | | |
+//     |5|6|7|8|9|
+	
+//1..Smallest element is present in top left corner
+//2..Largest element is present in bottom right corner
+//3..All elements in range [1+1+k,n+m+k] are present in matrix
+//4..Elements present in diagonal are same and they either have even or odd frequency.
+//5..A number XORed even number of times with itself is 0 and odd number of times is number itself.
+
+//The maximum number of times a number at (i,j) can occur above itself in matrix is i-1 and to its right is m-j.
+//Using the above concept at each unique number we can find how many times it actually occurs in matrix
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,m,k;
+        cin>>n>>m>>k;
+        int x=0;
+        for(int i=1;i<=n;i++)
+        {
+            int val=min(i-1,m-1)+1;
+            x^=(val%2!=0)?(i+1+k):0;
+        }
+        for(int j=2;j<=m;j++)
+        {
+            int val=min(n-1,m-j)+1;
+            x^=(val%2!=0)?(n+j+k):0;
+        }
+        cout<<x<<"\n";
+    }
+    return 0;
+}
