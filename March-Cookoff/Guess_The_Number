@@ -1,0 +1,27 @@
+//-----------------------------------------------------------EXPLAINATION---------------------------------------------------------------
+//The numbers with odd factors are Perfect squares , Since the maximum number we can guess is 1000000 , the sqrt of this number is 1000
+//So we need to run a loop from 1 to 1000 and in every test case we can print square of numbers between range [1,1000] , that way we only 
+//require 1000 guesses which is less than the provided number 2000.
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        for(int k=1;k<=1000;k++)
+        {
+            cout<<k*k<<"\n";
+            int val;
+            cin>>val;
+            if(val==1)
+                break;
+        }
+    }
+    return 0;
+}
+
